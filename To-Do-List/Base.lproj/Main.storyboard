@@ -71,6 +71,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
+                                                        <action selector="returnPressed:" destination="1mo-61-65g" eventType="primaryActionTriggered" id="9jw-10-eVR"/>
                                                         <action selector="textEditingChanged:" destination="1mo-61-65g" eventType="editingChanged" id="bms-wE-T1s"/>
                                                     </connections>
                                                 </textField>
@@ -84,6 +85,9 @@
                                                     </constraints>
                                                     <state key="normal" image="Unchecked"/>
                                                     <state key="selected" image="Checked"/>
+                                                    <connections>
+                                                        <action selector="isCompleteButtonTapped:" destination="1mo-61-65g" eventType="touchUpInside" id="ag8-bD-CTM"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -103,41 +107,38 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/1/17, 10:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-CQ-RGc">
-                                                    <rect key="frame" x="272" y="11" width="126" height="23.5"/>
+                                                    <rect key="frame" x="272" y="11" width="126" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="C6M-1H-fkS">
-                                                    <rect key="frame" x="0.0" y="34.5" width="414" height="165"/>
+                                                    <rect key="frame" x="0.0" y="31.5" width="414" height="165"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="165" id="J5B-52-Fgc"/>
-                                                        <constraint firstAttribute="width" constant="414" id="mJi-vA-4Sm"/>
+                                                        <constraint firstAttribute="height" constant="165" id="xCw-wx-vhr"/>
                                                     </constraints>
                                                     <date key="date" timeIntervalSinceReferenceDate="575516697.34096599">
                                                         <!--2019-03-29 01:44:57 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="1mo-61-65g" eventType="primaryActionTriggered" id="nSI-VK-nAu"/>
+                                                    </connections>
                                                 </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKe-i5-TBe">
-                                                    <rect key="frame" x="16" y="11" width="70" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="Aek-Tz-w3b"/>
-                                                        <constraint firstAttribute="height" constant="21" id="Zkg-EO-g7e"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="16" y="11" width="70" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="o3k-CQ-RGc" secondAttribute="trailing" constant="16" id="4cM-WY-FqA"/>
-                                                <constraint firstItem="zKe-i5-TBe" firstAttribute="leading" secondItem="abm-2v-Agm" secondAttribute="leading" constant="16" id="5vh-BH-ch2"/>
-                                                <constraint firstAttribute="trailing" secondItem="C6M-1H-fkS" secondAttribute="trailing" id="BSc-3r-8gV"/>
-                                                <constraint firstItem="o3k-CQ-RGc" firstAttribute="top" secondItem="abm-2v-Agm" secondAttribute="top" constant="11" id="DH8-9Q-75O"/>
-                                                <constraint firstItem="C6M-1H-fkS" firstAttribute="leading" secondItem="abm-2v-Agm" secondAttribute="leading" id="YSY-Yu-htM"/>
-                                                <constraint firstItem="zKe-i5-TBe" firstAttribute="top" secondItem="abm-2v-Agm" secondAttribute="top" constant="11" id="dEu-vQ-O0y"/>
-                                                <constraint firstAttribute="bottom" secondItem="C6M-1H-fkS" secondAttribute="bottom" id="j7p-Mf-yuW"/>
-                                                <constraint firstItem="C6M-1H-fkS" firstAttribute="top" secondItem="o3k-CQ-RGc" secondAttribute="bottom" id="zWY-2z-ixJ"/>
+                                                <constraint firstItem="zKe-i5-TBe" firstAttribute="leading" secondItem="abm-2v-Agm" secondAttribute="leading" constant="16" id="LJY-hi-QOn"/>
+                                                <constraint firstAttribute="trailing" secondItem="o3k-CQ-RGc" secondAttribute="trailing" constant="16" id="MNq-Pp-hxG"/>
+                                                <constraint firstItem="C6M-1H-fkS" firstAttribute="top" secondItem="o3k-CQ-RGc" secondAttribute="bottom" id="Trr-lx-cgW"/>
+                                                <constraint firstItem="C6M-1H-fkS" firstAttribute="leading" secondItem="abm-2v-Agm" secondAttribute="leading" id="XKR-gT-hu6"/>
+                                                <constraint firstAttribute="trailing" secondItem="C6M-1H-fkS" secondAttribute="trailing" id="eFm-91-NOe"/>
+                                                <constraint firstItem="zKe-i5-TBe" firstAttribute="top" secondItem="abm-2v-Agm" secondAttribute="top" constant="11" id="mSM-Jg-jdY"/>
+                                                <constraint firstItem="o3k-CQ-RGc" firstAttribute="top" secondItem="abm-2v-Agm" secondAttribute="top" constant="11" id="n4q-lA-ChI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -11,6 +11,8 @@ import UIKit
 class NewToDoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        dueDatePickerView.date = Date().addingTimeInterval(24 * 60 * 60)
+        updateDueDateLabel(date: dueDatePickerView.date)
         updateSaveButtonState()
     }
     @IBOutlet weak var titleTextField: UITextField!
@@ -25,14 +27,60 @@ class NewToDoTableViewController: UITableViewController {
         let text = titleTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
+    //Converts Date into a string
+    func updateDueDateLabel(date: Date) {
+        dueDateLabel.text = ToDo.dueDateFormatter.string(from: date)
+    }
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
     
-   
+    //Dismiss keyboead on return
+    @IBAction func returnPressed(_ sender: UITextField) {
+        titleTextField.resignFirstResponder()
+    }
+    
+    //Switch button image
+    @IBAction func isCompleteButtonTapped(_ sender: UIButton) {
+        isCompleteButton.isSelected = !isCompleteButton.isSelected
+    }
+    
+    //Matches a due date label with the selected dste in the picker
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        updateDueDateLabel(date: dueDatePickerView.date)
+    }
+    
+    //Expand/Collapse the DatePicker cell
+    var isPickerHidden = true
 
-    // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let normalCellHeight = CGFloat(44)
+        let largeCellHeight = CGFloat(200)
+        
+        switch indexPath {
+        case [1, 0]: // Due date cell
+                return isPickerHidden ? normalCellHeight : largeCellHeight
+        case [2, 0]: //Notes Cell
+                return largeCellHeight
+        default:
+                return normalCellHeight
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case [1, 0]:
+            isPickerHidden = !isPickerHidden
+            dueDateLabel.textColor = isPickerHidden ? .black : tableView.tintColor
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        default:
+            break
+        }
+    }
+
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
