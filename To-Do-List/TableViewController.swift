@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, ToDoCellDelegate {
     
     var todos = [ToDo]()
 
@@ -25,23 +25,29 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-
+    func checkmarkTapped(sender: ToDoCell) {
+        if let indexPath = tableView.indexPath(for: sender) {
+            var todo = todos[indexPath.row]
+            todo.isComplete = !todo.isComplete
+            todos[indexPath.row] = todo
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(todos)
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return todos.count
     }
 
-    @IBOutlet weak var isCompleteButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") as? ToDoCell else {
             fatalError("COULD NOT DEQUEUE A CELL")
         }
         let todo = todos[indexPath.row]
-        cell.textLabel?.text = todo.title
+        cell.titleLabel?.text = todo.title
+        cell.isCompleteButton.isSelected = todo.isComplete
+        cell.delegate = self
         return cell
     }
     
@@ -68,6 +74,7 @@ class TableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        ToDo.saveToDos(todos)
     }
 
     /*
@@ -84,7 +91,7 @@ class TableViewController: UITableViewController {
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-    
+            ToDo.saveToDos(todos)
         }    
     }
     
