@@ -32,18 +32,42 @@ class TableViewController: UITableViewController {
         return todos.count
     }
 
+    @IBOutlet weak var isCompleteButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") as? ToDoCell else {
             fatalError("COULD NOT DEQUEUE A CELL")
         }
         let todo = todos[indexPath.row]
         cell.textLabel?.text = todo.title
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            let todoViewController = segue.destination as! NewToDoTableViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedTodo = todos[indexPath.row]
+            todoViewController.todo = selectedTodo
+        }
+    }
 
     @IBAction func unwindToDoList(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind" else {return}
+        let sourceViewController = segue.source as! NewToDoTableViewController
         
+        if let todo = sourceViewController.todo {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                todos[selectedIndexPath.row] = todo
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: todos.count, section: 0)
+                todos.append(todo)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
     }
 
     /*

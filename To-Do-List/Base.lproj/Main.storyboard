@@ -18,13 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="1aZ-0Z-lcR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="1aZ-0Z-lcR" customClass="ToDoCell" customModule="To_Do_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1aZ-0Z-lcR" id="NH6-jQ-gDC">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="1mo-61-65g" kind="show" identifier="showDetails" id="Eo8-Wy-zdi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -64,9 +67,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remind me to..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9lk-xI-Kef">
-                                                    <rect key="frame" x="64" y="7" width="341" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remind me to..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9lk-xI-Kef">
+                                                    <rect key="frame" x="52" y="6" width="346" height="31.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -75,13 +77,11 @@
                                                         <action selector="textEditingChanged:" destination="1mo-61-65g" eventType="editingChanged" id="bms-wE-T1s"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpJ-Pi-KaY">
-                                                    <rect key="frame" x="15" y="4" width="36" height="36"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpJ-Pi-KaY">
+                                                    <rect key="frame" x="16" y="10" width="26" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="36" id="GEU-4n-Kyn"/>
-                                                        <constraint firstAttribute="height" constant="36" id="Y4L-AE-UxR"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="nAU-Lg-87M"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="pIq-Je-MEu"/>
+                                                        <constraint firstAttribute="width" constant="26" id="M33-b1-YWF"/>
+                                                        <constraint firstAttribute="height" constant="24" id="pQb-jd-ctG"/>
                                                     </constraints>
                                                     <state key="normal" image="Unchecked"/>
                                                     <state key="selected" image="Checked"/>
@@ -91,7 +91,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="DpJ-Pi-KaY" firstAttribute="centerY" secondItem="mKp-ze-UtH" secondAttribute="centerY" id="yMX-ch-bBM"/>
+                                                <constraint firstItem="9lk-xI-Kef" firstAttribute="top" secondItem="mKp-ze-UtH" secondAttribute="top" constant="6" id="3ea-5N-ayv"/>
+                                                <constraint firstAttribute="bottom" secondItem="DpJ-Pi-KaY" secondAttribute="bottom" constant="9.5" id="Qzy-nU-HPX"/>
+                                                <constraint firstItem="9lk-xI-Kef" firstAttribute="leading" secondItem="DpJ-Pi-KaY" secondAttribute="trailing" constant="10" id="Tyz-CR-f0J"/>
+                                                <constraint firstAttribute="bottom" secondItem="9lk-xI-Kef" secondAttribute="bottom" constant="6" id="q66-ZW-fu8"/>
+                                                <constraint firstItem="DpJ-Pi-KaY" firstAttribute="leading" secondItem="mKp-ze-UtH" secondAttribute="leading" constant="16" id="tPQ-WA-zpH"/>
+                                                <constraint firstAttribute="trailing" secondItem="9lk-xI-Kef" secondAttribute="trailing" constant="16" id="wJc-3J-IR9"/>
+                                                <constraint firstItem="DpJ-Pi-KaY" firstAttribute="top" secondItem="mKp-ze-UtH" secondAttribute="top" constant="10" id="yDq-hh-ZtB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -243,4 +249,7 @@
         <image name="Checked" width="44" height="44"/>
         <image name="Unchecked" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Eo8-Wy-zdi"/>
+    </inferredMetricsTieBreakers>
 </document>

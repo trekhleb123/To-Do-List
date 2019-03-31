@@ -14,6 +14,7 @@
 		4FA6B053224D92CA007B227E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA6B052224D92CA007B227E /* TableViewController.swift */; };
 		4FA6B055224D9661007B227E /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA6B054224D9661007B227E /* ToDo.swift */; };
 		4FA6B057224FBB9F007B227E /* NewToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA6B056224FBB9F007B227E /* NewToDoTableViewController.swift */; };
+		4FA6B059225144B6007B227E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA6B058225144B6007B227E /* ToDoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4FA6B052224D92CA007B227E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4FA6B054224D9661007B227E /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		4FA6B056224FBB9F007B227E /* NewToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoTableViewController.swift; sourceTree = "<group>"; };
+		4FA6B058225144B6007B227E /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				4FA6B03E224D91A2007B227E /* AppDelegate.swift */,
 				4FA6B042224D91A2007B227E /* Main.storyboard */,
 				4FA6B056224FBB9F007B227E /* NewToDoTableViewController.swift */,
+				4FA6B058225144B6007B227E /* ToDoCell.swift */,
 				4FA6B054224D9661007B227E /* ToDo.swift */,
 				4FA6B045224D91AC007B227E /* Assets.xcassets */,
 				4FA6B047224D91AC007B227E /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				4FA6B055224D9661007B227E /* ToDo.swift in Sources */,
 				4FA6B03F224D91A2007B227E /* AppDelegate.swift in Sources */,
 				4FA6B053224D92CA007B227E /* TableViewController.swift in Sources */,
+				4FA6B059225144B6007B227E /* ToDoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
