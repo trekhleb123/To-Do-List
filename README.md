@@ -1,7 +1,7 @@
-## To-Do List iOS App
+# To-Do List iOS App
 
-# Description
+## Description
 Simple iOS App that tracks your to-dos down
 
-# Technology
+## Technology
 Swift, Xcode, Interface Builder 
